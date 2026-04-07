@@ -1,0 +1,227 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@source "../../../../packages/ui/src";
+@source "../shell";
+@source "../config";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-canvas: var(--canvas);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+  --color-text-disabled: var(--text-disabled);
+  --color-border-hover: var(--border-hover);
+  --color-faint: var(--faint);
+  --color-status-active: var(--status-active);
+  --color-status-beta: var(--status-beta);
+  --color-status-upcoming: var(--status-upcoming);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-geist-mono);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+:root {
+  /* ── v11 DESIGN.md Primary (§2) ── */
+  --black: #171717;
+  --white: #ffffff;
+
+  /* Neutral Scale */
+  --gray-50: #fafafa;
+  --gray-100: #ebebeb;
+  --gray-400: #808080;
+  --gray-500: #666666;
+  --gray-600: #4d4d4d;
+
+  /* Status Accent (tinted bg) */
+  --green: #0cce6b;
+  --green-bg: rgba(12, 206, 107, 0.08);
+  --orange: #f5a623;
+  --orange-bg: rgba(245, 166, 35, 0.08);
+  --blue: #0070f3;
+  --blue-bg: rgba(0, 112, 243, 0.06);
+  --purple: #7928ca;
+  --purple-bg: rgba(121, 40, 202, 0.06);
+  --cyan-text: #0d9488;
+  --cyan-bg: rgba(80, 227, 194, 0.06);
+
+  /* Interactive */
+  --link-blue: #0072f5;
+  --focus-blue: hsla(212, 100%, 48%, 1);
+  --badge-bg: #ebf5ff;
+  --badge-text: #0068d6;
+
+  /* Shadow System (DESIGN.md §6) */
+  --shadow-ring: rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+  --shadow-ring-light: rgb(235, 235, 235) 0px 0px 0px 1px;
+  --shadow-card:
+    rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(0, 0, 0, 0.04) 0px 2px 2px 0px,
+    #fafafa 0px 0px 0px 1px;
+  --shadow-card-full:
+    rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(0, 0, 0, 0.04) 0px 2px 2px 0px,
+    rgba(0, 0, 0, 0.04) 0px 8px 8px -8px, #fafafa 0px 0px 0px 1px;
+
+  /* ── Existing semantic tokens (updated to DESIGN.md) ── */
+  /* Background */
+  --background: #fafafa;
+  --surface: #ffffff;
+  --canvas: #f5f5f5;
+
+  /* Text — #171717 per DESIGN.md (not pure black) */
+  --foreground: #171717;
+  --text-secondary: #4d4d4d;
+  --text-muted: #808080;
+  --text-disabled: #ebebeb;
+
+  /* Semantic */
+  --card: #ffffff;
+  --card-foreground: #171717;
+  --popover: #ffffff;
+  --popover-foreground: #171717;
+  --primary: #171717;
+  --primary-foreground: #ffffff;
+  --secondary: #fafafa;
+  --secondary-foreground: #171717;
+  --muted: #fafafa;
+  --muted-foreground: #666666;
+  --accent: #fafafa;
+  --accent-foreground: #171717;
+  --destructive: #dc2626;
+  --border: #ebebeb;
+  --border-hover: #999999;
+  --input: #ebebeb;
+  --ring: #808080;
+  --faint: #ebebeb;
+
+  /* Status */
+  --status-active: #0cce6b;
+  --status-beta: #f5a623;
+  --status-upcoming: #808080;
+
+  /* Chart */
+  --chart-1: oklch(0.809 0.105 251.813);
+  --chart-2: oklch(0.623 0.214 259.815);
+  --chart-3: oklch(0.546 0.245 262.881);
+  --chart-4: oklch(0.488 0.243 264.376);
+  --chart-5: oklch(0.424 0.199 265.638);
+
+  /* System */
+  --radius: 0.625rem;
+}
+
+.dark {
+  /* ── v11 Dark Tokens ── */
+  --black: #ededed;
+  --white: #0a0a0a;
+  --gray-50: #111111;
+  --gray-100: #2a2a2a;
+  --gray-400: #666666;
+  --gray-500: #808080;
+  --gray-600: #a0a0a0;
+  --green-bg: rgba(12, 206, 107, 0.12);
+  --orange-bg: rgba(245, 166, 35, 0.12);
+  --blue-bg: rgba(0, 112, 243, 0.12);
+  --purple-bg: rgba(121, 40, 202, 0.12);
+  --cyan-bg: rgba(80, 227, 194, 0.1);
+  --badge-bg: rgba(0, 112, 243, 0.15);
+  --badge-text: #4da3ff;
+  --shadow-ring: rgba(255, 255, 255, 0.1) 0px 0px 0px 1px;
+  --shadow-ring-light: rgba(255, 255, 255, 0.08) 0px 0px 0px 1px;
+  --shadow-card:
+    rgba(255, 255, 255, 0.1) 0px 0px 0px 1px,
+    rgba(0, 0, 0, 0.2) 0px 2px 2px 0px,
+    rgba(255, 255, 255, 0.03) 0px 0px 0px 1px;
+  --shadow-card-full:
+    rgba(255, 255, 255, 0.12) 0px 0px 0px 1px,
+    rgba(0, 0, 0, 0.3) 0px 2px 2px 0px, rgba(0, 0, 0, 0.2) 0px 8px 8px -8px,
+    rgba(255, 255, 255, 0.04) 0px 0px 0px 1px;
+
+  /* Background */
+  --background: #0a0a0a;
+  --surface: #111111;
+  --canvas: #1a1a1a;
+
+  /* Text */
+  --foreground: #ededed;
+  --text-secondary: #a0a0a0;
+  --text-muted: #666666;
+  --text-disabled: #2a2a2a;
+
+  /* Semantic */
+  --card: #111111;
+  --card-foreground: #ededed;
+  --popover: #111111;
+  --popover-foreground: #ededed;
+  --primary: #ededed;
+  --primary-foreground: #0a0a0a;
+  --secondary: #1a1a1a;
+  --secondary-foreground: #ededed;
+  --muted: #1a1a1a;
+  --muted-foreground: #666666;
+  --accent: #1a1a1a;
+  --accent-foreground: #ededed;
+  --destructive: #dc2626;
+  --border: #2a2a2a;
+  --border-hover: #444444;
+  --input: #2a2a2a;
+  --ring: #444444;
+  --faint: #2a2a2a;
+
+  /* Status */
+  --status-active: #0cce6b;
+  --status-beta: #f5a623;
+  --status-upcoming: #666666;
+
+  /* Chart */
+  --chart-1: oklch(0.809 0.105 251.813);
+  --chart-2: oklch(0.623 0.214 259.815);
+  --chart-3: oklch(0.546 0.245 262.881);
+  --chart-4: oklch(0.488 0.243 264.376);
+  --chart-5: oklch(0.424 0.199 265.638);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    @apply font-sans;
+    font-feature-settings: "liga" 1;
+    -webkit-font-smoothing: antialiased;
+  }
+}
